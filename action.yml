@@ -23,8 +23,11 @@ inputs:
     description: 'Difficulty of the question: "easy", "medium", "hard"'
     required: false
     default: 'medium'
+  custom_instructions:
+    description: 'Add specific instructions to the default prompt (e.g., "Focus on security vulnerabilities")'
+    required: false
   system_prompt:
-    description: 'Custom system prompt for the LLM'
+    description: 'Bypass the default prompt entirely with your own system prompt (Advanced)'
     required: false
 runs:
   using: 'docker'

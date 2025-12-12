@@ -63,7 +63,8 @@ def run_generate_mode(gh_client, llm_client, inputs):
     q_data = llm_client.generate_question(
         diff_text[:10000],  # Simple truncation
         difficulty=inputs.get('difficulty', 'medium'),
-        system_prompt=inputs.get('system_prompt')
+        system_prompt=inputs.get('system_prompt'),
+        custom_instructions=inputs.get('custom_instructions')
     )
     
     if not q_data:
@@ -204,7 +205,8 @@ def main():
         model = os.getenv('INPUT_MODEL') # Can be None, client handles default
         inputs = {
             'difficulty': os.getenv('INPUT_DIFFICULTY', 'medium'),
-            'system_prompt': os.getenv('INPUT_SYSTEM_PROMPT')
+            'system_prompt': os.getenv('INPUT_SYSTEM_PROMPT'),
+            'custom_instructions': os.getenv('INPUT_CUSTOM_INSTRUCTIONS')
         }
         
         llm_client = LLMClient(provider, api_key, model)

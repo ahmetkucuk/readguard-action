@@ -26,7 +26,9 @@ class LLMClient:
         else:
             raise ValueError(f"Unsupported provider: {provider}")
 
-    def generate_question(self, diff_text, difficulty="medium", system_prompt=None):
+    def generate_question(self, diff_text, difficulty="medium", system_prompt=None, custom_instructions=None):
+        extra_instructions = f"- {custom_instructions}" if custom_instructions else ""
+        
         default_system_prompt = f"""
 You are a code reviewer designed to ensure developers have read their changes.
 Generate a {difficulty} multiple-choice question based on the provided code diff.
@@ -35,6 +37,7 @@ Focus on:
 - Validating new values (timeouts, constants).
 - Understanding control flow changes.
 - Identifying security implications if applicable.
+{extra_instructions}
 
 Return ONLY a valid JSON object with this structure:
 {{
