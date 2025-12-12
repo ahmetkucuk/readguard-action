@@ -67,6 +67,7 @@ jobs:
 | `model` | Specific Model (e.g., `gpt-4o`, `gemini-1.5-flash`) | No | `gpt-4o`/`gemini-1.5-flash` |
 | `mode` | `generate` or `verify` | **Yes** | `generate` |
 | `difficulty` | `easy`\|`medium`\|`hard` | No | `medium` |
+| `custom_instructions` | Add rules (e.g., "Check for SQLi") | No | - |
 | `system_prompt` | Override default prompt | No | - |
 
 ## Development
