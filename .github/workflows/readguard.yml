@@ -19,8 +19,8 @@ jobs:
       - name: Run ReadGuard (Generate)
         uses: ./
         with:
-          provider: "openai"
-          api_key: ${{ secrets.OPENAI_API_KEY }}
+          provider: "gemini"
+          api_key: ${{ secrets.GEMINI_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           mode: "generate"
           difficulty: "easy"
