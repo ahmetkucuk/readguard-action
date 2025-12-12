@@ -1,0 +1,34 @@
+name: 'ReadGuard Action'
+description: 'Ensures developers have read their PRs by asking content-based questions.'
+author: 'ReadGuard'
+inputs:
+  api_key:
+    description: 'LLM Provider API Key (OpenAI or Gemini)'
+    required: true
+  provider:
+    description: 'LLM Provider: "openai" or "gemini"'
+    required: false
+    default: 'openai'
+  github_token:
+    description: 'GitHub Token'
+    required: true
+  model:
+    description: 'Model to use (e.g. gpt-4o, gemini-1.5-flash)'
+    required: false
+  mode:
+    description: 'Mode of operation: "generate" or "verify"'
+    required: true
+    default: 'generate'
+  difficulty:
+    description: 'Difficulty of the question: "easy", "medium", "hard"'
+    required: false
+    default: 'medium'
+  system_prompt:
+    description: 'Custom system prompt for the LLM'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'shield'
+  color: 'green'

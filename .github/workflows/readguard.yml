@@ -1,0 +1,42 @@
+name: ReadGuard Self-Test
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  issue_comment:
+    types: [created]
+
+jobs:
+  generate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      checks: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ReadGuard (Generate)
+        uses: ./
+        with:
+          provider: "openai"
+          api_key: ${{ secrets.OPENAI_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          mode: "generate"
+          difficulty: "easy"
+
+  verify:
+    if: github.event_name == 'issue_comment' && contains(github.event.comment.body, '/answer')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      checks: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ReadGuard (Verify)
+        uses: ./
+        with:
+          # No API Key needed for verification!
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          mode: "verify"
