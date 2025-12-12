@@ -19,7 +19,7 @@ class LLMClient:
             
         elif self.provider == "gemini":
             if not self.model:
-                self.model = "gemini-1.5-flash"
+                self.model = "gemini-2.0-flash-exp"
             genai.configure(api_key=api_key)
             self.client = genai.GenerativeModel(self.model)
             
