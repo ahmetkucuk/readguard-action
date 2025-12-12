@@ -64,7 +64,7 @@ jobs:
 | `api_key` | Your Provider (OpenAI/Gemini) API Key. | **Yes** (Generate) | - |
 | `github_token` | `secrets.GITHUB_TOKEN` | **Yes** | - |
 | `provider` | `openai` or `gemini` | No | `openai` |
-| `model` | Specific Model (e.g., `gpt-4o`, `gemini-1.5-flash`) | No | `gpt-4o`/`gemini-1.5-flash` |
+| `model` | Specific Model (e.g., `gpt-4o`, `gemini-2.5-flash`) | No | `gpt-4o`/`gemini-2.5-flash` |
 | `mode` | `generate` or `verify` | **Yes** | `generate` |
 | `difficulty` | `easy`\|`medium`\|`hard` | No | `medium` |
 | `custom_instructions` | Add rules (e.g., "Check for SQLi") | No | - |
